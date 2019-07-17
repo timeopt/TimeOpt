@@ -17,13 +17,13 @@ public class HttpAspect {
 
 
     public  final static Logger logger= LoggerFactory.getLogger(HttpAspect.class);
-    @Before("execution(public * com.example.demo.controller.ClientController.check(..))")
+    @Before("execution(public * com.example.demo.controller.TUserController.*(..))")
     public  void log(){
-       logger.info("hhhhh");
+       logger.info("h");
     }
 
 
-    @Pointcut("execution(public * com.example.demo.controller.ClientController.*(..))")
+    @Pointcut("execution(public * com.example.demo.controller.TUserController.*(..))")
     public  void logtest(){
 
     }

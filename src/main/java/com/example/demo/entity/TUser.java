@@ -1,9 +1,12 @@
 package com.example.demo.entity;
 
 
+import com.example.demo.plugins.UserPasswordEncrypt;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 
 import javax.persistence.*;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 @Entity
@@ -63,9 +66,9 @@ public class TUser extends  BaseEntity{
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 
     public String getTel() {
         return tel;
@@ -105,5 +108,13 @@ public class TUser extends  BaseEntity{
 
     public void setGrade(Integer grade) {
         this.grade = grade;
+    }
+
+    public void setPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        this.password = UserPasswordEncrypt.encrypt(password, "abcdef" + username + "abcdef" + username, 233);
+    }
+
+    public boolean checkPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        return this.password.equals(UserPasswordEncrypt.encrypt(password, "abcdef" + username + "abcdef" + username, 233));
     }
 }

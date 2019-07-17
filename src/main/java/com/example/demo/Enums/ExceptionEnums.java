@@ -7,7 +7,8 @@ public enum ExceptionEnums {
     MIDDLE_SCHOOL(101,"收入不足"),
     UNFIND_ERROR(110,"未发现记录"),
     PASS_ERROR(2,"用户名或密码错误"),
-    USER_TEL_ERROR(3,"手机号错误")
+    USER_TEL_ERROR(3,"手机号错误"),
+    PASSWORD_ERROR(1,"用户名密码错误")
 
     ;
 
